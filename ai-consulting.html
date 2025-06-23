@@ -1,33 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AI Consulting | IAMAI</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
-    body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background: #f8fafc; color: #1e293b; }
-    header, footer { background: #0f172a; color: white; text-align: center; padding: 1.5rem 0; }
-    .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
-    h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #00d4ff; }
-    p { font-size: 1.2rem; line-height: 1.6; margin-bottom: 1rem; }
-    a { color: #00d4ff; text-decoration: none; font-weight: 600; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1e293b;
+      background: #f8fafc;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Hero */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1581091215367-59a6f1d1d7b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 6rem 2rem;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.7);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff, #00d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #e2e8f0;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Sections */
+    .section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 3rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .card i {
+      font-size: 2rem;
+      color: #00d4ff;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      color: #64748b;
+    }
+
+    .cta {
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    .cta-button {
+      background: linear-gradient(135deg, #00d4ff, #0099cc);
+      color: white;
+      padding: 0.75rem 1.75rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+    }
+
+    .cta-button:hover {
+      background: #0099cc;
+      box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
+    }
+
+    footer {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .section-title { font-size: 2rem; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>AI Consulting</h1>
-  </header>
-  <div class="container">
-    <p>
-      Our consulting team partners with your business to map processes, define the right AI strategy, and build domain-specific models. We offer assessments, pilots, and full-scale AI deployments tailored to your goals.
-    </p>
-    <p>
-      Let’s co-create your AI roadmap. <a href="#contact">Talk to our experts</a>.
-    </p>
-  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>AI Consulting Services</h1>
+      <p>Transform your enterprise with our tailored AI consulting — from strategy to full-scale implementation.</p>
+    </div>
+  </section>
+
+  <!-- What We Offer -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">What We Offer</h2>
+      <div class="grid">
+        <div class="card">
+          <i class="fa-solid fa-lightbulb"></i>
+          <h3>AI Strategy Design</h3>
+          <p>Identify high-impact use cases and craft an actionable roadmap to align AI with business value.</p>
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-brain"></i>
+          <h3>Custom Model Development</h3>
+          <p>Develop contextual LLMs, RAG pipelines, and computer vision models tailored to your domain.</p>
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-gears"></i>
+          <h3>Implementation & Integration</h3>
+          <p>Integrate AI into your stack securely and at scale — from cloud infra to application interfaces.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Approach -->
+  <section class="section" style="background: #ffffff;">
+    <div class="container">
+      <h2 class="section-title">Our Consulting Approach</h2>
+      <div class="grid">
+        <div class="card">
+          <i class="fa-solid fa-magnifying-glass-chart"></i>
+          <h3>1. Discovery</h3>
+          <p>We assess your business goals, data landscape, and technical readiness.</p>
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-diagram-project"></i>
+          <h3>2. Design</h3>
+          <p>We architect solution blueprints aligned with ROI and scalability goals.</p>
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-rocket"></i>
+          <h3>3. Deploy</h3>
+          <p>We build, deploy, and continuously optimize AI solutions in your environment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta">
+        <h2 style="margin-bottom: 1rem;">Ready to accelerate with AI?</h2>
+        <p style="color: #64748b; margin-bottom: 2rem;">Let our experts guide your journey from concept to intelligent automation.</p>
+        <a href="index.html#contact" class="cta-button">Talk to Our Team</a>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    &copy; 2025 IAMAI. All rights reserved.
+    <div class="container">
+      &copy; 2025 IAMAI. All rights reserved.
+    </div>
   </footer>
+
 </body>
 </html>
