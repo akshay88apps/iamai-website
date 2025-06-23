@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RAG Agent vs. Agentic RAG</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.7;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    h1, h2, h3 {
+      color: #0f172a;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, #00d4ff, #0099cc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h2 {
+      font-size: 1.6rem;
+    }
+    p {
+      margin-bottom: 1.2rem;
+      color: #334155;
+    }
+    ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background: #e2e8f0;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #0f172a;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>RAG Agent vs. Agentic RAG: A Comprehensive Comparison</h1>
+    <p><strong>By Akshay Patkar</strong></p>
+
+    <h2>Overview</h2>
+    <p>The evolution of AI has ushered in sophisticated methods for information retrieval and generation. Two prominent paradigms in this domain are RAG Agent and Agentic RAG. While both aim to enhance the capabilities of language models by integrating external knowledge and information retrieval mechanisms, they differ fundamentally in their architecture, autonomy, and application. This analysis delves into their distinctions, strengths, and ideal use cases.</p>
+
+    <h2>Understanding RAG Agent</h2>
+    <ul>
+      <li><strong>Static Retrieval:</strong> Accessing information from a predefined vector database or document corpus</li>
+      <li><strong>Single-Step Processing:</strong> Fetching relevant data and generating a response in a linear sequence</li>
+      <li><strong>Limited Autonomy:</strong> Relying on predefined instructions without dynamic decision-making capabilities</li>
+    </ul>
+    <p><em>Example:</em> A telecom chatbot retrieving answers from a fixed FAQ database.</p>
+
+    <h2>Exploring Agentic RAG</h2>
+    <ul>
+      <li><strong>Dynamic Retrieval:</strong> From web, APIs, and real-time sources</li>
+      <li><strong>Multi-Step Reasoning:</strong> Breaks down queries into sub-tasks</li>
+      <li><strong>Autonomous Decision-Making:</strong> Selects tools/strategies contextually</li>
+      <li><strong>Advanced Tool Integration:</strong> APIs, calculators, search, etc.</li>
+    </ul>
+    <p><em>Example:</em> A diagnostic assistant accessing medical data and generating recommendations.</p>
+
+    <h2>Comparative Analysis</h2>
+    <table>
+      <tr><th>Feature</th><th>RAG Agent</th><th>Agentic RAG</th></tr>
+      <tr><td>Retrieval Sources</td><td>Static databases</td><td>Dynamic, multiple sources</td></tr>
+      <tr><td>Processing Flow</td><td>Linear</td><td>Iterative</td></tr>
+      <tr><td>Autonomy</td><td>Limited</td><td>High</td></tr>
+      <tr><td>Tool Integration</td><td>Minimal</td><td>Extensive</td></tr>
+      <tr><td>Ideal Use Cases</td><td>FAQs, support</td><td>Diagnostics, legal, analytics</td></tr>
+    </table>
+
+    <h2>Multi-Agent Architecture Patterns</h2>
+    <ul>
+      <li>Single Agent</li>
+      <li>Network</li>
+      <li>Supervisor</li>
+      <li>Sequential</li>
+      <li>Hierarchical</li>
+      <li>Custom</li>
+    </ul>
+
+    <h2>Implementation Considerations</h2>
+    <ul>
+      <li><strong>Task Complexity:</strong> Simple → RAG, Complex → Agentic RAG</li>
+      <li><strong>Resource Need:</strong> Agentic RAG needs more compute</li>
+      <li><strong>Scalability:</strong> Agentic RAG is more scalable</li>
+      <li><strong>Deployment Time:</strong> RAG Agents are quicker to build</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Both RAG Agent and Agentic RAG frameworks have distinct merits and applications. The choice depends on requirements, resources, and complexity. The future lies in blending both approaches to build truly adaptive and intelligent systems.</p>
+  </div>
+
+  <footer>
+    &copy; 2025 IAMAI. All rights reserved.
+  </footer>
+
+</body>
+</html>
