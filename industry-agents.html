@@ -6,28 +6,186 @@
   <title>Industry Agents | IAMAI</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background: #f8fafc; color: #1e293b; }
-    header, footer { background: #0f172a; color: white; text-align: center; padding: 1.5rem 0; }
-    .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
-    h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #00d4ff; }
-    p { font-size: 1.2rem; line-height: 1.6; margin-bottom: 1rem; }
-    a { color: #00d4ff; text-decoration: none; font-weight: 600; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #1e293b;
+      background: #f8fafc;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: white;
+      text-align: center;
+      padding: 5rem 1rem 3rem;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff, #00d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #cbd5e1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 3rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .agent-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .agent-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .agent-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: #0f172a;
+    }
+
+    .agent-card p {
+      color: #64748b;
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .cta-button {
+      background: linear-gradient(135deg, #00d4ff, #0099cc);
+      color: white;
+      padding: 0.75rem 1.75rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+    }
+
+    .cta-button:hover {
+      background: #0099cc;
+      box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
+    }
+
+    .cta {
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    footer {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Industry Agents</h1>
+    <div class="container">
+      <h1>Industry Agents</h1>
+      <p>Explore ready-to-deploy AI agents tailored for key industry functions. These agents are optimized for fast deployment and measurable impact.</p>
+    </div>
   </header>
-  <div class="container">
-    <p>
-      Explore our curated library of AI agents designed for industry-specific needs — from retail automation to intelligent document processing. Each agent is optimized for rapid deployment and plug-and-play integration.
-    </p>
-    <p>
-      Interested in building your own custom agent? <a href="#contact">Get in touch with us.</a>
-    </p>
-  </div>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Available Agent Domains</h2>
+      <div class="grid">
+        <div class="agent-card">
+          <h3>Marketing & Advertising</h3>
+          <p>Run targeted campaigns, personalize messaging, and automate copy generation using intelligent agent workflows.</p>
+          <a href="#" class="cta-button">View Details</a>
+        </div>
+        <div class="agent-card">
+          <h3>Manufacturing</h3>
+          <p>Leverage predictive maintenance, quality control, and inventory forecasting agents to boost efficiency.</p>
+          <a href="#" class="cta-button">View Details</a>
+        </div>
+        <div class="agent-card">
+          <h3>Human Resources</h3>
+          <p>Automate resume screening, candidate engagement, and onboarding tasks with contextual AI agents.</p>
+          <a href="#" class="cta-button">View Details</a>
+        </div>
+        <div class="agent-card">
+          <h3>Procurement</h3>
+          <p>Use AI agents for supplier discovery, RFQ handling, negotiation tracking, and compliance automation.</p>
+          <a href="#" class="cta-button">View Details</a>
+        </div>
+        <div class="agent-card">
+          <h3>Insurance</h3>
+          <p>Deploy agents for claims intake, risk evaluation, fraud detection, and personalized policy recommendations.</p>
+          <a href="#" class="cta-button">View Details</a>
+        </div>
+      </div>
+
+      <div class="cta">
+        <p style="font-size: 1.1rem; color: #475569; margin-bottom: 1.5rem;">
+          Looking for a domain-specific or custom-built AI agent?
+        </p>
+        <a href="index.html#contact" class="cta-button">Request a Custom Agent</a>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    &copy; 2025 IAMAI. All rights reserved.
+    <div class="container">
+      &copy; 2025 IAMAI. All rights reserved.
+    </div>
   </footer>
+
 </body>
 </html>
