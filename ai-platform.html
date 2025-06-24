@@ -4,14 +4,180 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AI Platform | IAMAI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background: #f8fafc; color: #1e293b; }
-    header, footer { background: #0f172a; color: white; text-align: center; padding: 1.5rem 0; }
-    .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
-    h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #00d4ff; }
-    p { font-size: 1.2rem; line-height: 1.6; margin-bottom: 1rem; }
-    a { color: #00d4ff; text-decoration: none; font-weight: 600; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      color: #1e293b; 
+      line-height: 1.6;
+    }
+    
+    header { 
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: white; 
+      text-align: center; 
+      padding: 2rem 0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    header h1 { 
+      font-size: 3rem; 
+      font-weight: 700;
+      color: #00d4ff; 
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      margin: 0;
+    }
+    
+    .container { 
+      max-width: 1000px; 
+      margin: 0 auto; 
+      padding: 3rem 2rem; 
+    }
+    
+    .gif-section {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .gif-container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+    }
+    
+    .gif-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    
+    .platform-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #0f766e;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content-section {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      padding: 3rem;
+      margin-bottom: 2rem;
+    }
+    
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: #0f766e;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    
+    .description {
+      font-size: 1.25rem;
+      color: #475569;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .layers-list {
+      list-style: none;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .layers-list li {
+      background: #f8fafc;
+      border-left: 4px solid #00d4ff;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 0 8px 8px 0;
+      transition: all 0.3s ease;
+    }
+    
+    .layers-list li:hover {
+      background: #f1f5f9;
+      transform: translateX(5px);
+    }
+    
+    .layers-list strong {
+      color: #0f766e;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    
+    .layers-list li p {
+      margin-top: 0.5rem;
+      color: #64748b;
+      font-size: 1rem;
+    }
+    
+    .highlight-section {
+      background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+      color: white;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    
+    .highlight-section p {
+      font-size: 1.2rem;
+      margin: 0;
+    }
+    
+    .highlight-section strong {
+      color: #a7f3d0;
+      font-weight: 600;
+    }
+    
+    footer { 
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: white; 
+      text-align: center; 
+      padding: 2rem 0;
+      font-size: 1rem;
+      border-top: 1px solid #334155;
+    }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      .container {
+        padding: 2rem 1rem;
+      }
+      
+      .section-title {
+        font-size: 1.75rem;
+      }
+      
+      .description {
+        font-size: 1.1rem;
+      }
+      
+      .gif-container {
+        padding: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -19,88 +185,57 @@
     <h1>AI Platform</h1>
   </header>
   
-<div class="container" style="text-align: center;">
-  <img src="AIplatform.gif" alt="AI Platform Architecture" style="max-width: 100%; height: auto; margin-bottom: 2rem;" />
-  <h2 style="color:#0f766e;">Our AI Platform</h2>
-  <p>
-    IAMAI’s AI Platform is structured across five key layers designed for modularity, scalability, and performance.
-  </p>
-  <ul style="text-align: left; font-size: 1rem; max-width: 800px; margin: 0 auto; padding-left: 1.2rem;">
-    <li><strong>Interaction Layer:</strong> Tools like Next.js, React, and Vercel enable rich user-facing experiences.</li>
-    <li><strong>Agent Framework Layer:</strong> Core frameworks such as LangChain and OpenAI’s functions power autonomous agent behaviors.</li>
-    <li><strong>Model & Inferencing Layer:</strong> Includes custom LLMs and APIs for scalable, high-performance language tasks.</li>
-    <li><strong>Data & Knowledge Layer:</strong> Integrates structured and unstructured sources like PostgreSQL, vector DBs, and Snowflake for grounded responses.</li>
-    <li><strong>Infrastructure Layer:</strong> Azure, Kubernetes, and cloud-native tools ensure deployment agility and GPU acceleration.</li>
-  </ul>
-  <p>
-    Built with enterprise readiness in mind, the platform embeds <strong>Responsible AI, IAM, and Data Governance</strong> across all layers.
-  </p>
-</div>
+  <div class="container">
+    <div class="gif-section">
+      <div class="gif-container">
+        <img src="AIplatform.gif" alt="IAMAI Platform Architecture Diagram" />
+      </div>
+      <h2 class="platform-title">IAMAI Platform</h2>
+    </div>
+    
+    <div class="content-section">
+      <h2 class="section-title">Introducing the IAMAI Platform</h2>
+      <p class="description">
+        The IAMAI Platform is an enterprise-grade AI architecture built for the modern digital landscape. 
+        Designed with modularity, scalability, and security at its core, our platform spans five integrated 
+        layers that work seamlessly together to deliver powerful AI-driven solutions for businesses of all sizes.
+      </p>
+      
+      <ul class="layers-list">
+        <li>
+          <strong>Interaction Layer</strong>
+          <p>Creates dynamic and responsive user experiences through modern frameworks like Next.js, React, and Vercel, ensuring intuitive interfaces that engage users effectively.</p>
+        </li>
+        <li>
+          <strong>Agent Framework Layer</strong>
+          <p>Powers intelligent autonomous behaviors using advanced frameworks such as LangChain, OpenAI functions, and sophisticated orchestration engines for seamless AI interactions.</p>
+        </li>
+        <li>
+          <strong>Model & Inferencing Layer</strong>
+          <p>Delivers high-performance AI capabilities through a comprehensive mix of LLM APIs, custom fine-tuned models, and optimized inference frameworks for real-time processing.</p>
+        </li>
+        <li>
+          <strong>Data & Knowledge Layer</strong>
+          <p>Integrates diverse data sources including structured databases, knowledge graphs, and RAG systems (PostgreSQL, Weaviate, Snowflake) to provide contextually grounded AI responses.</p>
+        </li>
+        <li>
+          <strong>Infrastructure Layer</strong>
+          <p>Built on robust cloud-native technologies including Azure, Docker, Kubernetes, and GPU-accelerated environments to support demanding workloads with maximum flexibility and reliability.</p>
+        </li>
+      </ul>
+      
+      <div class="highlight-section">
+        <p>
+          The IAMAI Platform integrates <strong>Responsible AI principles</strong>, <strong>Identity & Access Management (IAM)</strong>, 
+          and <strong>comprehensive compliance tooling</strong> across all layers, ensuring enterprise-grade data governance 
+          and ethical AI deployment standards.
+        </p>
+      </div>
+    </div>
+  </div>
 
   <footer>
-    &copy; 2025 IAMAI. All rights reserved.
-  </footer>
-</body>
-</html>
-<div class="container" style="text-align: center; font-family: 'Inter', sans-serif;">
-  <img src="AIplatform.gif" alt="AI Platform Architecture" style="max-width: 100%; height: auto; margin-bottom: 0.5rem;" />
-  <h3 style="margin-top: 0; font-weight: 500; color: #334155;">IAMAI Platform</h3>
-  <h2 style="color:#0f766e; font-size: 2rem; margin-top: 2rem;">Introducing the IAMAI Platform</h2>
-  <p style="font-size: 1.1rem;">
-    The IAMAI Platform is designed as a modular, enterprise-grade AI architecture that spans five core layers — from interaction to infrastructure — ensuring seamless integration, scalability, and security across the stack.
-  </p>
-  <ul style="text-align: left; font-size: 1rem; max-width: 800px; margin: 0 auto; padding-left: 1.2rem; line-height: 1.6;">
-    <li><strong>Interaction Layer:</strong> Enables dynamic user experiences via frameworks like Next.js, React, and Vercel.</li>
-    <li><strong>Agent Framework Layer:</strong> Powers autonomous behaviors using LangChain, OpenAI functions, and orchestration engines.</li>
-    <li><strong>Model & Inferencing Layer:</strong> Supports a mix of LLM APIs, fine-tuned models, and inference frameworks for real-time processing.</li>
-    <li><strong>Data & Knowledge Layer:</strong> Connects databases, knowledge graphs, and RAG systems (like Postgres, Weaviate, Snowflake).</li>
-    <li><strong>Infrastructure Layer:</strong> Runs on Azure, Docker, K8s, and GPU-backed environments to support heavy workloads and flexibility.</li>
-  </ul>
-  <p style="font-size: 1.1rem;">
-    At its core, the platform integrates <strong>Responsible AI</strong> principles, <strong>Identity & Access Management (IAM)</strong>, and <strong>compliance tooling</strong> to align with enterprise-grade data governance standards.
-  </p>
-</div>
-TYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI Platform | IAMAI</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background: #f8fafc; color: #1e293b; }
-    header, footer { background: #0f172a; color: white; text-align: center; padding: 1.5rem 0; }
-    .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
-    h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #00d4ff; }
-    p { font-size: 1.2rem; line-height: 1.6; margin-bottom: 1rem; }
-    a { color: #00d4ff; text-decoration: none; font-weight: 600; }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>AI Platform</h1>
-  </header>
-  
-<div class="container" style="text-align: center;">
-  <img src="AIplatform.gif" alt="AI Platform Architecture" style="max-width: 100%; height: auto; margin-bottom: 2rem;" />
-  <h2 style="color:#0f766e;">Our AI Platform</h2>
-  <p>
-    IAMAI’s AI Platform is structured across five key layers designed for modularity, scalability, and performance.
-  </p>
-  <ul style="text-align: left; font-size: 1rem; max-width: 800px; margin: 0 auto; padding-left: 1.2rem;">
-    <li><strong>Interaction Layer:</strong> Tools like Next.js, React, and Vercel enable rich user-facing experiences.</li>
-    <li><strong>Agent Framework Layer:</strong> Core frameworks such as LangChain and OpenAI’s functions power autonomous agent behaviors.</li>
-    <li><strong>Model & Inferencing Layer:</strong> Includes custom LLMs and APIs for scalable, high-performance language tasks.</li>
-    <li><strong>Data & Knowledge Layer:</strong> Integrates structured and unstructured sources like PostgreSQL, vector DBs, and Snowflake for grounded responses.</li>
-    <li><strong>Infrastructure Layer:</strong> Azure, Kubernetes, and cloud-native tools ensure deployment agility and GPU acceleration.</li>
-  </ul>
-  <p>
-    Built with enterprise readiness in mind, the platform embeds <strong>Responsible AI, IAM, and Data Governance</strong> across all layers.
-  </p>
-</div>
-
-  <footer>
-    &copy; 2025 IAMAI. All rights reserved.
+    <p>&copy; 2025 IAMAI. All rights reserved.</p>
   </footer>
 </body>
 </html>
