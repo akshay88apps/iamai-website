@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAMAI - Fashion Try-On Demo</title>
+    <!-- Font Awesome for icons -->
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" xintegrity="sha512-jQqGjNgJHMS5G3Uj/5/2KHjXfRXmvBLtybceObdSGFuTnAos5k+K0T9tBbdR1UsjAfk+HhHsIdC9LUzv56b7UQ==" referrerpolicy="no-referrer" rel="stylesheet"/>
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset & Font */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #e2e8f0; /* Light text color */
+            background-color: #0f172a; /* Dark background from your site */
+            overflow-x: hidden;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Navigation (Copied from your index.html for consistency) */
+        nav {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #00d4ff;
+            text-decoration: none;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: #00d4ff; }
+
+        /* Demo Section Styling */
+        .demo-section {
+            padding: 8rem 0 5rem; /* Increased top padding to clear fixed nav */
+            text-align: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            min-height: calc(100vh - 80px); /* Adjust height for nav and footer */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .demo-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="1000" height="1000" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+            z-index: 1;
+        }
+        .demo-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: rgba(30, 41, 59, 0.8); /* Semi-transparent dark background */
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .demo-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+        .demo-description {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 2.5rem;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+        }
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .cta-button {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Footer (Copied from your index.html for consistency) */
+        footer {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .demo-title { font-size: 2.5rem; }
+            .demo-section { padding-top: 6rem; }
+            .nav-links { display: none; } /* Assuming mobile nav is handled by JS or not needed for this page */
+        }
+    </style>
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-content">
+                <a class="logo" href="index.html">IAMAI</a>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#blogs">Blogs</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="demo.html">Demo</a></li> <!-- Added link to this demo page -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Demo Section -->
+    <section class="demo-section" data-aos="fade-up">
+        <div class="demo-content">
+            <h1 class="demo-title">Virtual Try-On Demo</h1>
+            <p class="demo-description">
+                Experience the future of fashion retail with our AI-powered virtual try-on application.
+                See how garments look on real people, instantly and accurately.
+            </p>
+            <div class="video-container">
+                <!-- Video Embed Code -->
+                <video controls autoplay loop muted playsinline>
+                    <source src="tryonvideo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <a class="cta-button" href="index.html#contact">Get Started with AI</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 IAMAI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            easing: 'ease-in-out'
+        });
+    </script>
+</body>
+</html>
