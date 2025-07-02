@@ -1,58 +1,419 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Demos | IAMAI</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    body { font-family: 'Inter', sans-serif; margin: 0; padding: 2rem; background: #f9f9f9; color: #1e293b; }
-    h1 { text-align: center; color: #0f766e; }
-    .demo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-      max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .demo-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease;
-      text-decoration: none;
-      color: inherit;
-    }
-    .demo-card:hover {
-      transform: translateY(-5px);
-    }
-    .demo-title { font-size: 1.2rem; font-weight: bold; color: #0f766e; margin-bottom: 0.5rem; }
-    .demo-status { font-size: 0.9rem; color: #64748b; }
-  </style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Demos | IAMAI</title>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-jQqGjNgJHMS5G3Uj/5/2KHjXfRXmvBLtybceObdSGFuTnAos5k+K0T9tBbdR1UsjAfk+HhHsIdC9LUzv56b7UQ==" referrerpolicy="no-referrer" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { 
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+  line-height: 1.6; 
+  color: #1a1a1a;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  min-height: 100vh;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* Navigation */
+nav { 
+  background: rgba(15, 23, 42, 0.95); 
+  backdrop-filter: blur(10px);
+  position: fixed; 
+  width: 100%; 
+  top: 0; 
+  z-index: 1000; 
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+}
+
+.nav-content { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+}
+
+.logo { 
+  font-size: 2rem; 
+  font-weight: 800; 
+  color: #00d4ff;
+  text-decoration: none;
+  background: linear-gradient(135deg, #00d4ff, #0099cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-links { 
+  display: flex; 
+  list-style: none; 
+  gap: 2rem; 
+}
+
+.nav-links a { 
+  color: #e2e8f0; 
+  text-decoration: none; 
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover { color: #00d4ff; }
+
+/* Page Header */
+.page-header {
+  padding: 8rem 0 4rem 0;
+  text-align: center;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="1000" height="1000" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+}
+
+.page-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(135deg, #ffffff, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInUp 1s ease-out;
+}
+
+.page-subtitle {
+  font-size: 1.3rem;
+  color: #cbd5e1;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+/* Main Content */
+.main-content {
+  padding: 5rem 0;
+  position: relative;
+}
+
+/* Demo Grid */
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.demo-card {
+  background: #f8fafc;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  position: relative;
+  animation: slideInFromBottom 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.demo-card:nth-child(1) { animation-delay: 0.1s; }
+.demo-card:nth-child(2) { animation-delay: 0.2s; }
+.demo-card:nth-child(3) { animation-delay: 0.3s; }
+.demo-card:nth-child(4) { animation-delay: 0.4s; }
+
+.demo-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 25px 50px rgba(0, 212, 255, 0.15);
+  background: linear-gradient(135deg, #ffffff, #f1f5f9);
+}
+
+.demo-card:hover .demo-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.demo-card:hover .demo-status.available {
+  background: linear-gradient(135deg, #00d4ff, #0099cc);
+  color: white;
+}
+
+.demo-card:hover .demo-status.coming-soon {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+}
+
+.demo-icon {
+  height: 180px;
+  background: linear-gradient(135deg, #00d4ff, #0099cc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  color: white;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.demo-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.demo-card:hover .demo-icon::before {
+  left: 100%;
+}
+
+.demo-content {
+  padding: 2rem;
+}
+
+.demo-title {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #1e293b;
+  line-height: 1.4;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.demo-description {
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.demo-status {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.demo-status.available {
+  background: rgba(0, 212, 255, 0.1);
+  color: #00d4ff;
+  border: 2px solid rgba(0, 212, 255, 0.2);
+}
+
+.demo-status.coming-soon {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+  border: 2px solid rgba(245, 158, 11, 0.2);
+}
+
+/* Back Button */
+.back-button {
+  position: fixed;
+  top: 50%;
+  left: 2rem;
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, #00d4ff, #0099cc);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.2rem;
+  box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.back-button:hover {
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+}
+
+/* Footer */
+footer {
+  background: #0f172a;
+  color: white;
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-title { font-size: 2.5rem; }
+  .page-subtitle { font-size: 1.1rem; }
+  .demo-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .back-button {
+    position: static;
+    margin: 2rem auto;
+    transform: none;
+  }
+  .back-button:hover {
+    transform: scale(1.1);
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.demo-icon i {
+  animation: float 3s ease-in-out infinite;
+}
+
+.demo-icon i:nth-child(1) { animation-delay: 0s; }
+.demo-icon i:nth-child(2) { animation-delay: 0.5s; }
+</style>
 </head>
 <body>
-  <h1>Demos</h1>
-  <div class="demo-grid">
-    <a href="virtualtryon.html" class="demo-card">
-      <div class="demo-title">AI Virtual Try-On</div>
-      <div class="demo-status">Explore our AI-driven virtual fashion experience.</div>
-    </a>
-    <div class="demo-card">
-      <div class="demo-title">In-Restaurant Menu Recommender</div>
-      <div class="demo-status">Coming Soon</div>
-    </div>
-    <div class="demo-card">
-      <div class="demo-title">Computer Vision-Based QC</div>
-      <div class="demo-status">Coming Soon</div>
-    </div>
-    <div class="demo-card">
-      <div class="demo-title">Personal Dietician</div>
-      <div class="demo-status">Coming Soon</div>
-    </div>
-  </div>
+<!-- Navigation -->
+<nav>
+<div class="container">
+<div class="nav-content">
+<a class="logo" href="index.html">IAMAI</a>
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="index.html#about">About</a></li>
+<li><a href="index.html#services">Services</a></li>
+<li><a href="index.html#blogs">Blogs</a></li>
+<li><a href="index.html#contact">Contact</a></li>
+<li><a href="demos.html" style="color: #00d4ff;">Demos</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- Back Button -->
+<a href="index.html" class="back-button">
+<i class="fas fa-arrow-left"></i>
+</a>
+
+<!-- Page Header -->
+<section class="page-header">
+<div class="container">
+<h1 class="page-title">AI Demos</h1>
+<p class="page-subtitle">Experience the future of AI technology through our interactive demonstrations</p>
+</div>
+</section>
+
+<!-- Main Content -->
+<section class="main-content">
+<div class="container">
+<div class="demo-grid">
+<a href="virtualtryon.html" class="demo-card">
+<div class="demo-icon">
+<i class="fa-solid fa-shirt"></i>
+</div>
+<div class="demo-content">
+<div class="demo-title">AI Virtual Try-On</div>
+<div class="demo-description">
+Experience the future of fashion retail with our AI-powered virtual try-on technology. See garments on models in real-time using cutting-edge computer vision.
+</div>
+<span class="demo-status available">Try Now</span>
+</div>
+</a>
+
+<div class="demo-card">
+<div class="demo-icon">
+<i class="fa-solid fa-utensils"></i>
+</div>
+<div class="demo-content">
+<div class="demo-title">In-Restaurant Menu Recommender</div>
+<div class="demo-description">
+Smart menu recommendations based on dietary preferences, allergies, and past orders. Personalized dining experience powered by AI algorithms.
+</div>
+<span class="demo-status coming-soon">Coming Soon</span>
+</div>
+</div>
+
+<div class="demo-card">
+<div class="demo-icon">
+<i class="fa-solid fa-eye"></i>
+</div>
+<div class="demo-content">
+<div class="demo-title">Computer Vision-Based QC</div>
+<div class="demo-description">
+Automated quality control system using advanced computer vision to detect defects and ensure product quality in manufacturing processes.
+</div>
+<span class="demo-status coming-soon">Coming Soon</span>
+</div>
+</div>
+
+<div class="demo-card">
+<div class="demo-icon">
+<i class="fa-solid fa-apple-whole"></i>
+</div>
+<div class="demo-content">
+<div class="demo-title">Personal Dietician</div>
+<div class="demo-description">
+AI-powered nutrition advisor that creates personalized meal plans, tracks dietary goals, and provides real-time health recommendations.
+</div>
+<span class="demo-status coming-soon">Coming Soon</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<p>&copy; 2025 IAMAI. All rights reserved.</p>
+</div>
+</footer>
 </body>
 </html>
