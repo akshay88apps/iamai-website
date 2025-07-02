@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Demos | IAMAI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', sans-serif; margin: 0; padding: 2rem; background: #f9f9f9; color: #1e293b; }
+    h1 { text-align: center; color: #0f766e; }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .demo-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    .demo-card:hover {
+      transform: translateY(-5px);
+    }
+    .demo-title { font-size: 1.2rem; font-weight: bold; color: #0f766e; margin-bottom: 0.5rem; }
+    .demo-status { font-size: 0.9rem; color: #64748b; }
+  </style>
+</head>
+<body>
+  <h1>Demos</h1>
+  <div class="demo-grid">
+    <a href="virtualtryon.html" class="demo-card">
+      <div class="demo-title">AI Virtual Try-On</div>
+      <div class="demo-status">Explore our AI-driven virtual fashion experience.</div>
+    </a>
+    <div class="demo-card">
+      <div class="demo-title">In-Restaurant Menu Recommender</div>
+      <div class="demo-status">Coming Soon</div>
+    </div>
+    <div class="demo-card">
+      <div class="demo-title">Computer Vision-Based QC</div>
+      <div class="demo-status">Coming Soon</div>
+    </div>
+    <div class="demo-card">
+      <div class="demo-title">Personal Dietician</div>
+      <div class="demo-status">Coming Soon</div>
+    </div>
+  </div>
+</body>
+</html>
