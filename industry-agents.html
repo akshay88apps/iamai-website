@@ -121,6 +121,30 @@
       padding: 2rem 0;
     }
 
+    .back-fab {
+      position: fixed;
+      bottom: 2rem;
+      left: 2rem;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #00d4ff, #0099cc);
+      border-radius: 50%;
+      color: white;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+
+    .back-fab:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 30px rgba(0, 212, 255, 0.4);
+    }
+
     @media (max-width: 768px) {
       header h1 {
         font-size: 2rem;
@@ -170,7 +194,7 @@
           <p>Deploy agents for claims intake, risk evaluation, fraud detection, and personalized policy recommendations.</p>
           <a href="insurance-usecases.html" class="cta-button">View Details</a>
         </div>
-          <div class="agent-card">
+        <div class="agent-card">
           <h3>Customer Service</h3>
           <p>Deploy agents for query routing, instant responses, sentiment analysis, and personalized resolution recommendations.</p>
           <a href="customer-service-usecases.html" class="cta-button">View Details</a>
@@ -185,6 +209,10 @@
       </div>
     </div>
   </section>
+
+  <a href="demos.html" class="back-fab">
+    <i class="fas fa-arrow-left"></i>
+  </a>
 
   <footer>
     <div class="container">
