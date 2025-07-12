@@ -27,13 +27,13 @@
       margin-bottom: 1rem;
     }
     h2 {
-      margin-top: 2rem;
-      font-size: 1.5rem;
+      margin-top: 2.5rem;
+      font-size: 1.7rem;
       color: #0f172a;
     }
     p {
       line-height: 1.8;
-      margin-top: 0.5rem;
+      margin-top: 0.8rem;
       color: #334155;
     }
     img {
@@ -77,28 +77,24 @@
 
   <h2>Overview</h2>
   <p>
-    This AI-powered chatbot helps diners receive personalized menu recommendations while dining in a restaurant. Whether it’s based on spice tolerance, dietary restrictions, or favorite cuisines, the chatbot suggests dishes that suit the customer’s preferences.
+    The In-Restaurant Menu Recommender is a conversational AI solution designed to assist diners during their visit to a restaurant. It acts as a digital waiter, offering intelligent dish suggestions based on real-time inputs. The application provides a seamless and intuitive way for users to interact with the menu using a chatbot interface. Customers can indicate their dietary restrictions, spice tolerance, and cravings. Based on these cues, the system recommends personalized dish options from the available menu. This creates a more engaging and customer-centric dining experience. It is particularly effective in busy restaurants where human staff may not have time to offer detailed recommendations. The system enhances service quality without requiring additional manpower. Moreover, it improves customer satisfaction and can drive higher order value through tailored upselling.
   </p>
 
   <h2>Use Case</h2>
   <p>
-    This application was developed upon request from one of the leading restaurant chains in India (client name confidential). It streamlines the in-dining experience, improves upselling, and delights customers with intelligent suggestions.
+    The solution was developed at the request of one of India’s largest casual dining chains, who sought to differentiate themselves through tech-driven personalization. The client aimed to enhance their in-dining engagement while respecting the limited attention span of customers. With the rise of digital menus post-COVID, this AI tool fits naturally into the evolving restaurant workflow. It functions on a tablet, kiosk, or personal device via QR code access. During pilot deployment, the system helped customers discover lesser-known items they may have otherwise missed. Additionally, it offered filters like vegetarian-only suggestions and avoided items that conflicted with allergy flags. The client observed smoother operations, as fewer questions were directed toward waitstaff. More importantly, customers appreciated the novelty and convenience of the experience. Early success metrics also showed increased orders of high-margin add-ons and combo dishes.
   </p>
 
   <img src="Delicious Bites.png" alt="In-Restaurant Chat UI" />
 
   <h2>Technology Stack</h2>
   <p>
-    The project was built using:
-    <ul>
-      <li><strong>Python</strong> and <strong>FastAPI</strong> for the backend</li>
-      <li><strong>Node.js</strong> and <strong>Tailwind CSS</strong> for the frontend</li>
-    </ul>
+    The backend of the application was built using Python with FastAPI, chosen for its high performance and ease of integration with modern frontend frameworks. FastAPI allowed us to quickly define endpoints, handle input validation, and maintain clean async code. The frontend used Node.js with Vite and Tailwind CSS, ensuring a fast, responsive, and stylish UI. Tailwind helped maintain a consistent visual language while keeping the stylesheet lightweight. React components powered the chat UI, enabling real-time updates and typing animations. For the data layer, a simple SQLite and JSON schema was used during development and later transitioned to PostgreSQL for production. The chatbot logic was designed to interface with OpenAI APIs for natural language understanding. Finally, the app was packaged to be deployable across different platforms – including POS tablets, mobile web, and standalone kiosks. This flexibility helped the client roll it out smoothly across multiple branches. Classic RAG !
   </p>
 
   <h2>Development Speed</h2>
   <p>
-    Despite the complexity of chatbot integration and recommendation logic, the application was designed, developed, and deployed within just 7 days, showcasing the agility of our team and modular development approach.
+    One of the standout achievements of this project was the speed of delivery. From the initial briefing to production deployment, the complete application was built in just 7 working days. This was possible due to the agile process adopted, involving rapid iteration, daily demos, and tight feedback loops. Reusable components from previous chatbot projects gave us a strong starting foundation. Tailwind CSS enabled quick prototyping and on-the-fly visual adjustments during stakeholder reviews. We also used ready-to-integrate UI animations and backend scaffolds to accelerate setup. The lightweight nature of FastAPI allowed us to spin up backend services within hours. Thorough planning and close collaboration with the client’s tech team ensured zero friction in deploying to their preferred infrastructure. The final system not only met but exceeded client expectations, delivering a polished, production-ready solution in record time.
   </p>
 </div>
 
