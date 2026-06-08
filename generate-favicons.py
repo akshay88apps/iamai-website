@@ -1,6 +1,6 @@
 from PIL import Image
 
-SOURCE = "logo.jpg"
+SOURCE = "grow10x-logo.png"
 
 # The source logo is a wide image (icon mark + wordmark) on a light background.
 # The icon mark (circular arrow/network graphic) sits left-of-center; crop a
