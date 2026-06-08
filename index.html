@@ -20,8 +20,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 			* { margin: 0; padding: 0; box-sizing: border-box; }
-			
-			body { 
+
+			html { scroll-behavior: smooth; }
+
+			body {
 				font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
 				line-height: 1.6; 
 				color: #1a1a1a;
@@ -31,15 +33,22 @@
 			.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 			
 			/* Navigation */
-			nav { 
-				background: rgba(15, 23, 42, 0.95); 
-				backdrop-filter: blur(10px);
-				position: fixed; 
-				width: 100%; 
-				top: 0; 
-				z-index: 1000; 
+			nav {
+				background: transparent;
+				backdrop-filter: blur(0px);
+				position: fixed;
+				width: 100%;
+				top: 0;
+				z-index: 1000;
 				padding: 1rem 0;
-				transition: all 0.3s ease;
+				transition: background 0.3s ease, backdrop-filter 0.3s ease, padding 0.3s ease;
+			}
+
+			nav.scrolled {
+				background: rgba(15, 23, 42, 0.85);
+				backdrop-filter: blur(12px);
+				padding: 0.6rem 0;
+				box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 			}
 			
 			.nav-content { 
@@ -74,15 +83,15 @@
 			.nav-links a:hover { color: #00d4ff; }
 			
 			/* Hero Section */								
-			.hero { 
+			.hero {
 				background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-				min-height: 100vh; 
-				display: flex; 
-				align-items: center; 
+				min-height: 100vh;
+				display: flex;
+				align-items: center;
 				position: relative;
 				overflow: hidden;
 			}
-			
+
 			.hero::before {
 				content: '';
 				position: absolute;
@@ -92,6 +101,25 @@
 				bottom: 0;
 				background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="1000" height="1000" fill="url(%23grid)"/></svg>');
 				opacity: 0.3;
+			}
+
+			.hero::after {
+				content: '';
+				position: absolute;
+				top: -50%;
+				left: -50%;
+				right: -50%;
+				bottom: -50%;
+				background: radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.15), transparent 45%),
+					radial-gradient(circle at 70% 70%, rgba(0, 153, 204, 0.15), transparent 45%);
+				animation: heroGlow 16s ease-in-out infinite alternate;
+				z-index: 1;
+			}
+
+			@keyframes heroGlow {
+				0% { transform: translate(0, 0) scale(1); }
+				50% { transform: translate(5%, 5%) scale(1.1); }
+				100% { transform: translate(-5%, -5%) scale(1); }
 			}
 			
 			.hero-content { 
@@ -422,13 +450,82 @@
 			}
 			
 			/* Footer */
-			footer { 
-				background: #0f172a; 
-				color: white; 
-				text-align: center; 
-				padding: 2rem 0; 
+			footer {
+				background: #0f172a;
+				color: white;
+				text-align: center;
+				padding: 2rem 0;
 			}
-			
+
+			/* Scroll-to-top button */
+			.scroll-top-btn {
+				position: fixed;
+				bottom: 2rem;
+				right: 2rem;
+				width: 48px;
+				height: 48px;
+				border: none;
+				border-radius: 50%;
+				background: linear-gradient(135deg, #00d4ff, #0099cc);
+				color: white;
+				font-size: 1.2rem;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+				opacity: 0;
+				visibility: hidden;
+				transform: translateY(20px);
+				transition: all 0.3s ease;
+				z-index: 999;
+			}
+
+			.scroll-top-btn.visible {
+				opacity: 1;
+				visibility: visible;
+				transform: translateY(0);
+			}
+
+			.scroll-top-btn:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 15px 40px rgba(0, 212, 255, 0.45);
+			}
+
+			/* Hover micro-interactions */
+			.nav-links a {
+				position: relative;
+			}
+
+			.nav-links a::after {
+				content: '';
+				position: absolute;
+				left: 0;
+				bottom: -4px;
+				width: 0;
+				height: 2px;
+				background: #00d4ff;
+				transition: width 0.3s ease;
+			}
+
+			.nav-links a:hover::after {
+				width: 100%;
+			}
+
+			.service-link, .read-more {
+				display: inline-block;
+				transition: color 0.3s ease, transform 0.3s ease;
+			}
+
+			.service-link:hover, .read-more:hover {
+				transform: translateX(4px);
+			}
+
+			.blog-button:hover {
+				transform: translateY(-3px);
+				box-shadow: 0 15px 40px rgba(30, 41, 59, 0.4);
+			}
+
 			/* Responsive Design */
 			@media (max-width: 768px) {
 				.hero h1 { font-size: 2.5rem; }
@@ -665,6 +762,20 @@ From business process mapping to custom AI models, we provide end-to-end consult
 <p>&copy; 2025 GROW10X. All rights reserved.</p>
 </div>
 </footer>
+<button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top" type="button"><i class="fa-solid fa-arrow-up"></i></button>
+<script>
+    // Sticky nav background + scroll-to-top button visibility
+    const nav = document.querySelector('nav');
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', function () {
+      const scrolled = window.scrollY > 50;
+      nav.classList.toggle('scrolled', scrolled);
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 <script>
     // Basic Form Validation Logic
     document.getElementById("contactForm").addEventListener("submit", function (e) {
