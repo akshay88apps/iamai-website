@@ -63,7 +63,8 @@
       display: inline-block;
     }
     
-    .gif-container img {
+    .gif-container img,
+    .gif-container video {
       max-width: 100%;
       height: auto;
       border-radius: 8px;
@@ -196,7 +197,10 @@
   <div class="container">
     <div class="gif-section">
       <div class="gif-container">
-        <img src="AIplatform.gif" alt="GROW10X Platform Architecture Diagram" />
+        <video autoplay loop muted playsinline aria-label="GROW10X Platform Architecture Diagram">
+          <source src="AIplatform.mp4" type="video/mp4" />
+          <img src="AIplatform.gif" alt="GROW10X Platform Architecture Diagram" />
+        </video>
       </div>
       <h2 class="platform-title">GROW10X Platform</h2>
     </div>
