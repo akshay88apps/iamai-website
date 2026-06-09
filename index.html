@@ -29,6 +29,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preconnect" href="https://cdn.simpleicons.org" crossorigin>
+<link rel="preconnect" href="https://www.vectorlogo.zone" crossorigin>
 <style>
 :root{
   --bg:#ffffff;
@@ -213,6 +215,7 @@ footer{border-top:1px solid var(--panel-brd);padding:46px 0 34px;position:relati
       <a href="#platform">Platform</a>
       <a href="#blogs">Blogs</a>
       <a href="#demos">Demos</a>
+      <a href="#partners">Partners</a>
       <a href="#contact">Contact</a>
       <a href="#contact" class="btn btn-primary">Get Started</a>
     </nav>
@@ -425,6 +428,39 @@ footer{border-top:1px solid var(--panel-brd);padding:46px 0 34px;position:relati
           <div><b>Promise:</b> AI for everything and everyone</div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUSTED PLATFORMS & PARTNERS -->
+<style>
+  .partners-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin-top:50px}
+  .partner{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;min-height:120px;padding:24px 14px;background:var(--panel);border:1px solid var(--panel-brd);border-radius:18px;box-shadow:var(--shadow);transition:.3s}
+  .partner:hover{transform:translateY(-4px);border-color:rgba(37,117,230,.4)}
+  .partner img{height:40px;width:auto;max-width:100%;object-fit:contain;filter:grayscale(1);opacity:.6;transition:.3s}
+  .partner:hover img{filter:none;opacity:1}
+  .partner span{font-size:.82rem;font-weight:600;color:var(--navy);text-align:center;letter-spacing:-.2px}
+  @media(max-width:920px){.partners-grid{grid-template-columns:repeat(4,1fr)}}
+  @media(max-width:680px){.partners-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+<section id="partners" style="background:linear-gradient(180deg,transparent,rgba(37,117,230,.04),transparent)">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow reveal">Ecosystem</span>
+    <h2 class="reveal">Our trusted <span class="grad-text">platforms &amp; partners</span></h2>
+    <p class="sub reveal" style="margin-left:auto;margin-right:auto">We build on the most trusted infrastructure and AI platforms in the world — so the solutions we deliver are secure, scalable, and future-proof.</p>
+    <div class="partners-grid">
+      <div class="partner reveal"><img src="https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg" alt="Amazon AWS logo" loading="lazy" onerror="this.style.display='none'"><span>Amazon AWS</span></div>
+      <div class="partner reveal"><img src="https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-icon.svg" alt="Microsoft Azure logo" loading="lazy" onerror="this.style.display='none'"><span>Microsoft Azure</span></div>
+      <div class="partner reveal"><img src="https://cdn.simpleicons.org/googlecloud" alt="Google Cloud logo" loading="lazy" onerror="this.style.display='none'"><span>Google Cloud</span></div>
+      <div class="partner reveal"><img src="https://www.vectorlogo.zone/logos/ibm/ibm-icon.svg" alt="IBM logo" loading="lazy" onerror="this.style.display='none'"><span>IBM</span></div>
+      <div class="partner reveal"><img src="https://cdn.simpleicons.org/huggingface" alt="Hugging Face logo" loading="lazy" onerror="this.style.display='none'"><span>Hugging Face</span></div>
+      <div class="partner reveal"><img src="https://cdn.simpleicons.org/nvidia" alt="NVIDIA logo" loading="lazy" onerror="this.style.display='none'"><span>NVIDIA</span></div>
+      <div class="partner reveal"><img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="OpenAI logo" loading="lazy" onerror="this.style.display='none'"><span>OpenAI</span></div>
+      <div class="partner reveal"><img src="https://cdn.simpleicons.org/anthropic" alt="Anthropic logo" loading="lazy" onerror="this.style.display='none'"><span>Anthropic</span></div>
+      <div class="partner reveal"><img src="https://cdn.simpleicons.org/meta" alt="Meta logo" loading="lazy" onerror="this.style.display='none'"><span>Meta AI</span></div>
+      <div class="partner reveal"><img src="https://cdn.simpleicons.org/langchain" alt="LangChain logo" loading="lazy" onerror="this.style.display='none'"><span>LangChain</span></div>
+      <div class="partner reveal"><img src="https://cdn.simpleicons.org/n8n" alt="n8n logo" loading="lazy" onerror="this.style.display='none'"><span>n8n</span></div>
+      <div class="partner reveal"><img src="https://cdn.simpleicons.org/snowflake" alt="Snowflake logo" loading="lazy" onerror="this.style.display='none'"><span>Snowflake</span></div>
     </div>
   </div>
 </section>
