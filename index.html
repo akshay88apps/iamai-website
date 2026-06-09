@@ -480,6 +480,46 @@ footer{border-top:1px solid var(--panel-brd);padding:46px 0 34px;position:relati
 </footer>
 </div>
 
+<!-- BLOG READ-MORE MODAL -->
+<style>
+  .blog-modal{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;padding:24px}
+  .blog-modal.open{display:flex}
+  .blog-modal__overlay{position:absolute;inset:0;background:rgba(20,44,82,.55);backdrop-filter:blur(4px)}
+  .blog-modal__dialog{position:relative;background:var(--panel);width:min(720px,100%);max-height:88vh;border-radius:22px;box-shadow:0 30px 80px -20px rgba(20,44,82,.45);display:flex;flex-direction:column;overflow:hidden;animation:blogPop .25s ease}
+  @keyframes blogPop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+  .blog-modal__bar{height:8px;background:var(--grad);flex:none}
+  .blog-modal__close{position:absolute;top:18px;right:20px;width:38px;height:38px;border:none;border-radius:50%;background:#eef4fc;color:var(--navy);font-size:1.1rem;cursor:pointer;line-height:1;transition:.2s;z-index:2}
+  .blog-modal__close:hover{background:#dce8fb}
+  .blog-modal__body{padding:40px 44px 28px;overflow-y:auto}
+  .blog-modal__date{color:var(--indigo);font-weight:600;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase}
+  .blog-modal__title{font-size:clamp(1.4rem,3.4vw,2rem);font-weight:800;color:var(--navy);margin:10px 0 20px;line-height:1.2}
+  .blog-modal__content p{color:#3a4866;margin-bottom:15px;line-height:1.78}
+  .blog-modal__content h4{color:var(--navy);margin:22px 0 8px;font-size:1.05rem}
+  .blog-modal__content a{color:var(--indigo);font-weight:600}
+  .blog-modal__nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 44px;border-top:1px solid var(--panel-brd);background:#f8fbff;flex:none}
+  .blog-modal__nav button{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:12px;border:1px solid var(--panel-brd);background:#fff;color:var(--navy);font-weight:600;cursor:pointer;font-size:.9rem;transition:.2s}
+  .blog-modal__nav button:hover{border-color:var(--indigo);color:var(--indigo);transform:translateY(-1px)}
+  .blog-modal__counter{color:var(--muted);font-size:.85rem;font-weight:600}
+  @media(max-width:560px){.blog-modal__body{padding:32px 22px 24px}.blog-modal__nav{padding:14px 20px}.blog-modal__nav button{padding:10px 14px;font-size:.85rem}}
+</style>
+<div class="blog-modal" id="blogModal" role="dialog" aria-modal="true" aria-labelledby="blogModalTitle">
+  <div class="blog-modal__overlay" data-close></div>
+  <div class="blog-modal__dialog">
+    <div class="blog-modal__bar"></div>
+    <button class="blog-modal__close" data-close aria-label="Close article">✕</button>
+    <div class="blog-modal__body">
+      <span class="blog-modal__date" id="blogModalDate"></span>
+      <h3 class="blog-modal__title" id="blogModalTitle"></h3>
+      <div class="blog-modal__content" id="blogModalContent"></div>
+    </div>
+    <div class="blog-modal__nav">
+      <button id="blogPrev" type="button">← Previous</button>
+      <span class="blog-modal__counter" id="blogCounter"></span>
+      <button id="blogNext" type="button">Next →</button>
+    </div>
+  </div>
+</div>
+
 <script>
 // mobile menu
 const mt=document.getElementById('menuToggle'),nl=document.getElementById('navlinks');
@@ -514,6 +554,60 @@ cf.addEventListener('submit',async(e)=>{
     btn.textContent='Send Message';btn.disabled=false;
   }
 });
+
+// blog "Read More" -> modal with previous / next
+(function(){
+  const cards=[...document.querySelectorAll('#blogs .blog')];
+  if(!cards.length) return;
+  // Full article bodies, in the same order as the blog cards above.
+  const bodies=[
+    `<p>For two decades, business process automation meant rigid, rules-based workflows that broke the moment reality deviated from the script. AI-driven automation changes the equation: systems that read unstructured documents, interpret intent, and make context-aware decisions without a human hand-off at every step.</p><p>The shift is from automating <em>tasks</em> to automating <em>outcomes</em>. Instead of digitising a single approval step, modern platforms orchestrate an entire process end-to-end — extracting data, validating it against policy, routing exceptions, and learning from every correction.</p><h4>Where to start</h4><p>The highest-ROI candidates share three traits: high volume, meaningful variability, and a clear definition of done. Start there, instrument everything, and let measured results — not hype — guide the next wave.</p>`,
+    `<p>Off-the-shelf AI is the right default for most teams: it is fast to deploy, continuously improved by the vendor, and removes the burden of training and serving models yourself. The real question is when that default stops paying off.</p><p>Custom models earn their keep when your data is genuinely proprietary, when latency or cost at scale becomes a constraint, or when a few points of accuracy translate directly into revenue or risk. Below that bar, customisation is usually a distraction.</p><h4>A practical rule</h4><p>Prototype on a hosted model to prove the use case. Only invest in fine-tuning or a custom model once you have real usage data showing exactly where the generic solution falls short.</p>`,
+    `<p>Retrieval-Augmented Generation grounds a model's answers in your own knowledge base. But there are two very different ways to wire it up, and conflating them leads to systems that quietly under-deliver.</p><p>A <strong>RAG agent</strong> follows a fixed pipeline: retrieve, then generate. <strong>Agentic RAG</strong> hands control to the model — it decides what to retrieve, when to retrieve again, which tools to call, and when it finally has enough to answer.</p><h4>Choosing between them</h4><p>Fixed RAG is cheaper, faster, and easier to evaluate — ideal for well-scoped Q&amp;A. Agentic RAG shines on multi-hop, open-ended questions where a single retrieval pass is not enough.</p><p><a href="rag-agent-vs-agentic-rag.html">Read the full comparison →</a></p>`,
+    `<p>Copilots suggest; agents act. That one-word difference is the entire enterprise shift now underway. A copilot drafts an email for you to send; an agent triages the inbox, drafts the replies, schedules the follow-ups, and escalates only what it cannot resolve.</p><p>Moving from demo to production means confronting the unglamorous parts: permissions, audit trails, rollback, and graceful failure. An agent with write-access is only as trustworthy as the guardrails around it.</p><h4>Deploy safely</h4><p>Start with tightly-scoped tools, human approval on irreversible actions, and full observability. Widen autonomy as confidence — backed by metrics — grows.</p>`,
+    `<p>A single agent hits a ceiling fast: context windows fill, prompts become unwieldy, and one model juggling ten responsibilities does none of them well. Orchestration breaks the work into specialists that plan, delegate, and check each other.</p><p>The hard part is not spawning agents — it is coordination. Who owns the plan? How do agents share state? What stops two agents from undoing each other's work?</p><h4>Patterns that work</h4><p>A planner-executor split, explicit hand-off contracts, and an independent verifier that reviews output before it ships are the building blocks of teams that collaborate rather than collide.</p>`,
+    `<p>The model is rarely the dominant cost — serving it is. Inferencing-as-a-Service treats inference as a managed utility, applying the same economics discipline that transformed cloud compute.</p><p>Three levers move the bill the most: routing easy requests to smaller models, quantising weights to cut memory and latency, and batching requests to keep expensive GPUs saturated.</p><h4>The payoff</h4><p>Done well, enterprises serve LLMs in real time at a fraction of the naive cost — without the accuracy hit that crude cost-cutting usually brings.</p>`,
+    `<p>Frontier models are extraordinary generalists, but most enterprise tasks are not general. For classification, extraction, routing, and domain-specific drafting, a small, fine-tuned model is often faster, cheaper, and more private.</p><p>Smaller models run closer to your data — even on-premise — which matters when compliance forbids sending sensitive inputs to a third-party API.</p><h4>When smaller wins</h4><p>Narrow scope, high volume, latency sensitivity, and strict data-residency requirements all tilt the decision toward a focused SLM over a giant.</p>`,
+    `<p>Responsible AI fails when it stays a slide of principles. It succeeds when those principles become shippable controls — code, not slogans.</p><p>That means identity and access management on every model and tool, audit trails that capture what was asked and answered, and evaluation gates that block a release if quality or safety regresses.</p><h4>Trust by design</h4><p>Bake governance into the deployment pipeline from day one. Retrofitting it after an incident is slower, costlier, and far less convincing to regulators and customers alike.</p>`,
+    `<p>Pilots prove feasibility; they rarely prove value. The gap between a successful demo and measurable business impact is where most AI initiatives quietly stall.</p><p>The fix is to define the metric before you build: cycle time, cost-to-serve, conversion, revenue lift. Instrument a baseline, then measure the delta the system actually produces.</p><h4>Beyond the pilot</h4><p>Tie every deployment to a number a CFO recognises. Initiatives with a clear, tracked metric survive budget cycles; science projects do not.</p>`
+  ];
+  const posts=cards.map((c,i)=>({
+    date:(c.querySelector('.date')||{}).textContent||'',
+    title:(c.querySelector('h3')||{}).textContent||'',
+    body:bodies[i]||('<p>'+((c.querySelector('p')||{}).textContent||'')+'</p>')
+  }));
+  const modal=document.getElementById('blogModal'),
+        elDate=document.getElementById('blogModalDate'),
+        elTitle=document.getElementById('blogModalTitle'),
+        elContent=document.getElementById('blogModalContent'),
+        elCounter=document.getElementById('blogCounter'),
+        bodyEl=modal.querySelector('.blog-modal__body');
+  let idx=0;
+  function render(){
+    const p=posts[idx];
+    elDate.textContent=p.date;
+    elTitle.textContent=p.title;
+    elContent.innerHTML=p.body;
+    elCounter.textContent=(idx+1)+' / '+posts.length;
+    bodyEl.scrollTop=0;
+  }
+  function open(i){idx=i;render();modal.classList.add('open');document.body.style.overflow='hidden';}
+  function close(){modal.classList.remove('open');document.body.style.overflow='';}
+  function go(d){idx=(idx+d+posts.length)%posts.length;render();}
+  cards.forEach((c,i)=>{
+    const link=c.querySelector('.more');
+    if(link) link.addEventListener('click',e=>{e.preventDefault();open(i);});
+  });
+  document.getElementById('blogPrev').addEventListener('click',()=>go(-1));
+  document.getElementById('blogNext').addEventListener('click',()=>go(1));
+  modal.querySelectorAll('[data-close]').forEach(el=>el.addEventListener('click',close));
+  document.addEventListener('keydown',e=>{
+    if(!modal.classList.contains('open'))return;
+    if(e.key==='Escape')close();
+    else if(e.key==='ArrowLeft')go(-1);
+    else if(e.key==='ArrowRight')go(1);
+  });
+})();
 </script>
 </body>
 </html>
