@@ -1,0 +1,108 @@
+/* ==========================================================================
+   grow10X — unified light theme
+   Linked AFTER each legacy page's inline <style> so these rules win and bring
+   the old dark/cyan demo & use-case pages in line with the new homepage.
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+  --bg:#ffffff; --bg2:#eef4fc; --panel:#ffffff; --panel-brd:#e3e9f3;
+  --text:#142c52; --muted:#5d6e8c; --cyan:#2575e6; --indigo:#1f6fe0;
+  --violet:#1456bf; --navy:#172c52;
+  --grad:linear-gradient(120deg,#3f8ef0,#1f6fe0 55%,#1456bf);
+  --shadow:0 18px 40px -12px rgba(20,44,82,.12);
+}
+
+/* ---- Base ---------------------------------------------------------------- */
+body{
+  font-family:'Inter','Segoe UI',system-ui,Arial,sans-serif!important;
+  background:var(--bg)!important;
+  color:var(--text)!important;
+}
+a{color:var(--indigo);}
+a:hover{color:var(--violet);}
+p,li{color:var(--text);}
+
+/* Shared gradient-text helper for big titles.
+   clip + text-fill MUST be !important: the `background` shorthand above resets
+   background-clip to border-box, so without !important the text won't clip. */
+h1,
+.page-title,.platform-title,.section-title,header h1{
+  background:var(--grad)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;color:transparent!important;
+}
+
+/* ---- Top navigation (demos, virtualtryon) -------------------------------- */
+nav{
+  background:rgba(255,255,255,.85)!important;
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--panel-brd);
+}
+.nav-links a{color:var(--navy)!important;font-weight:600;}
+.nav-links a:hover{color:var(--indigo)!important;}
+/* Logos here are <img> inside <a class="logo"> — strip the legacy gradient box
+   so the image shows cleanly (no blue rectangle behind it). */
+.logo{
+  background:none!important;
+  -webkit-text-fill-color:initial!important;
+  color:var(--navy)!important;
+}
+
+/* ---- Page / section headers that used to be dark ------------------------- */
+header{
+  background:linear-gradient(135deg,#eef4fc 0%,#ffffff 100%)!important;
+  border-bottom:1px solid var(--panel-brd);
+}
+header p,.page-subtitle{color:var(--muted)!important;}
+.page-header{
+  background:linear-gradient(135deg,#eef4fc 0%,#ffffff 100%)!important;
+  border-bottom:1px solid var(--panel-brd);
+}
+
+/* Image hero (ai-consulting) keeps its dark photo overlay; just retint title */
+.hero h1{
+  background:linear-gradient(120deg,#ffffff,#9cc4ff)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;color:transparent!important;
+}
+
+/* ---- Cards & accents ----------------------------------------------------- */
+.usecase h4,.card i,.layers-list strong,.demo-status.available{color:var(--indigo)!important;}
+.feedback button:hover{color:var(--indigo)!important;}
+.demo-icon{background:var(--grad)!important;}
+.demo-card:hover .demo-status.available{background:var(--grad)!important;color:#fff!important;}
+
+/* ai-platform highlight band */
+.highlight-section{background:var(--grad)!important;}
+.highlight-section,.highlight-section *{color:#fff!important;}
+
+/* ---- Buttons: blue gradient, white text ---------------------------------- */
+.cta-button,.btn-primary,.back-button,.back-fab{
+  background:var(--grad)!important;
+  color:#fff!important;
+  border:none!important;
+}
+.cta-button:hover,.btn-primary:hover,.back-button:hover,.back-fab:hover{
+  background:var(--violet)!important;
+  color:#fff!important;
+}
+
+/* ---- Dark demo hero (virtualtryon) --------------------------------------- */
+.demo-section{
+  background:linear-gradient(180deg,#ffffff 0%,#eef4fc 100%)!important;
+}
+.demo-content{
+  background:var(--panel)!important;
+  border:1px solid var(--panel-brd);
+  box-shadow:var(--shadow)!important;
+}
+.demo-description{color:var(--muted)!important;}
+
+/* ---- Footer: light to match homepage ------------------------------------- */
+footer{
+  background:#f6f9fe!important;
+  color:#9aa6bd!important;
+  border-top:1px solid var(--panel-brd);
+}
+footer a{color:var(--indigo)!important;}
